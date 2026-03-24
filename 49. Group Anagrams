@@ -1,0 +1,45 @@
+Problem Link -> https://leetcode.com/problems/group-anagrams/description/
+
+//Approach 1: sort each string and store anagram strings in a HashMap.
+//TC : O(n * klogk) SC:  O(n * k)
+
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string, vector<string>> mp;
+        vector<vector<string>> ans;
+        for(int i=0;i<strs.size();i++){
+            string str2=strs[i];
+            sort(str2.begin(), str2.end());
+            mp[str2].push_back(strs[i]);
+        }
+
+        for(auto x:mp){
+            ans.push_back(x.second);
+        }
+        return ans;
+    }
+};
+
+//Approach 2: groups anagrams from a list of strings using a map with a nested map as the key.
+//TC : O(n * k) SC:  O(n * k)
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+       map<map<char,int>, vector<string>> mp;
+       vector<vector<string>> ans;
+       for(int i=0;i<strs.size();i++){
+        map<char,int> cnt;
+        for(auto c:strs[i]){
+            int idx=c-'a';
+            cnt[idx]++;
+        }
+        mp[cnt].push_back(strs[i]);
+       }
+
+       for(auto x: mp){
+        ans.push_back(x.second);
+       }
+       return ans;
+    }
+};
