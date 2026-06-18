@@ -3,7 +3,9 @@ public:
     queue<pair<int, int>> q;
     vector<int> move = {-1, 0, 1, 0};
 
-    void runBFS(const vector<vector<char>>& grid, vector<vector<bool>>& vis) {
+    void runBFS(const vector<vector<char>>& grid, vector<vector<bool>>& vis, int i, int j) {
+        q.push({i, j});
+        vis[i][j] = true;
         int rows = grid.size();
         int cols = grid[0].size();
         while (!q.empty()) {
@@ -29,10 +31,8 @@ public:
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (!vis[i][j] && grid[i][j] == '1') {
-                    q.push({i, j});
-                    vis[i][j] = true;
                     cnt++;
-                    runBFS(grid, vis);
+                    runBFS(grid, vis, i, j);
                 }
             }
         }
