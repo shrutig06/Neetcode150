@@ -3,27 +3,21 @@ public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
         int m=matrix.size();
         int n=matrix[0].size();
+        int possibleRow=0;
 
-        vector<int> combinedMatrix;
         for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                combinedMatrix.push_back(matrix[i][j]);
-            }
-        }
-
-        int l=0, r=combinedMatrix.size()-1;
-
-        while(l<=r){
-            int mid=l+(r-l)/2;
-
-            if(combinedMatrix[mid]==target){
+            if(target==matrix[i][n-1]){
                 return true;
-            } else if(combinedMatrix[mid]>target){
-                r=mid-1;
-            } else{
-                l=mid+1;
+            } else if(target<matrix[i][n-1]){
+                possibleRow=i;
+                break;
             }
         }
+
+        for(int j=0;j<n;j++){
+            if(matrix[possibleRow][j]==target) return true;
+        }
+
         return false;
     }
 };
