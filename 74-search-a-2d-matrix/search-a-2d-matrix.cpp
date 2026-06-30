@@ -11,14 +11,12 @@ public:
             int row = mid / n;
             int col = mid % n;
 
-            if (row < m && col < n) {
-                if (matrix[row][col] == target)
-                    return true;
-                else if (matrix[row][col] > target) {
-                    r = mid - 1;
-                } else {
-                    l = mid + 1;
-                }
+            if (matrix[row][col] == target)
+                return true;
+            else if (matrix[row][col] > target) {
+                r = mid - 1;
+            } else {
+                l = mid + 1;
             }
         }
         return false;
