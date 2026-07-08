@@ -1,39 +1,38 @@
 class Solution {
 public:
-    queue<pair<int, int>> q;
-    vector<int> move = {-1, 0, 1, 0};
-
-    void runBFS(vector<vector<char>>& grid) {
-        int rows = grid.size();
-        int cols = grid[0].size();
-        while (!q.empty()) {
-            int x = q.front().first;
-            int y = q.front().second;
+    vector<int> move={-1, 1, 0, 0};
+    void callBFS(queue<pair<int,int>>& q, vector<vector<char>>& grid){
+        int row=grid.size(), col=grid[0].size();
+       
+        while(!q.empty()){
+            auto it=q.front();
             q.pop();
-            for (int i = 0; i <= 3; i++) {
-                int newX = x + move[i], newY = y + move[3 - i];
-                if (newX >= 0 && newY >= 0 && newX < rows && newY < cols && grid[newX][newY] == '1') {
-                    q.push({newX, newY});
-                    grid[newX][newY]='0';
+            for(int i=0;i<4;i++){
+                int x=it.first+move[i], y=it.second+move[3-i];
+                if(x>=0 && x<row && y>=0 && y<col && grid[x][y]=='1'){
+                    grid[x][y]='2';
+                    q.push({x,y});
                 }
             }
         }
+        
     }
     int numIslands(vector<vector<char>>& grid) {
-        int rows = grid.size();
-        int cols = grid[0].size();
-        int cnt = 0;
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (grid[i][j] == '1') {
-                    q.push({i, j});
-                    grid[i][j]='0';
+        int row=grid.size();
+        int col=grid[0].size();
+        queue<pair<int,int>> q;
+        int cnt=0;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(grid[i][j]=='1'){
                     cnt++;
-                    runBFS(grid);
+                    q.push({i,j});
+                    grid[i][j]='2';
+                    callBFS(q, grid);
                 }
             }
         }
+
         return cnt;
     }
 };
