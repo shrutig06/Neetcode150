@@ -5,10 +5,10 @@ public:
         int cnt = 0;
         int maxCnt = 0;
         for (auto x:s) {
-            int curr=x;
-            cnt=1;
-            if(!s.count(curr-1)){
-                while(s.count(curr+1)){
+            if (!s.count(x - 1)) {
+                int curr = x;
+                cnt = 1;
+                while (s.count(curr + 1)) {
                     cnt++;
                     curr++;
                 }
