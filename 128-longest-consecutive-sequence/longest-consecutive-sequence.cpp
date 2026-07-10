@@ -5,7 +5,7 @@ public:
         int cnt = 0;
         int maxCnt = 0;
         for (auto x:s) {
-            if (!s.count(x - 1)) {
+            if (s.find(x - 1)==s.end()) {
                 int curr = x;
                 cnt = 1;
                 while (s.count(curr + 1)) {
