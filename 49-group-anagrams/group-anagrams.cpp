@@ -10,18 +10,17 @@ public:
                 freq[c - 'a']++;
             }
 
-            string s;
+            string key;
             for (auto x : freq) {
-                s += to_string(x);
-                s += "#";
+                key += to_string(x);
+                key += "#";
             }
 
-            mp[s].push_back(str);
+            mp[key].push_back(str);
         }
 
-        for (auto it : mp) {
-            vector<string> v = it.second;
-            res.push_back(v);
+        for (auto &it : mp) {
+            res.push_back(it.second);
         }
         return res;
     }
