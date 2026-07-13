@@ -4,16 +4,16 @@ public:
         vector<vector<string>> res;
         unordered_map<string, vector<string>> mp;
 
-        for (auto str : strs) {
+        for (string str : strs) {
             vector<int> freq(26, 0);
-            for (auto c : str) {
+            for (char c : str) {
                 freq[c - 'a']++;
             }
 
             string key;
-            for (auto x : freq) {
+            for (int x : freq) {
                 key += to_string(x);
-                key += "#";
+                key += '#';
             }
 
             mp[key].push_back(str);
