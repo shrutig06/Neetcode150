@@ -8,7 +8,7 @@ public:
         for(int i=1;i<intervals.size();i++){
             if(intervals[i][0]>=lastKept[1]){
                 lastKept=intervals[i];
-            } else if(intervals[i][0]<lastKept[1]){
+            } else {
                 lastKept[1]=min(intervals[i][1],lastKept[1]);
                 cnt++;
             }
