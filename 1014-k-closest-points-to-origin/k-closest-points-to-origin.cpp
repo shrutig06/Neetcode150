@@ -1,20 +1,20 @@
 class Solution {
 public:
     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
-        //{distance, point} priority queue is by default max heap
-        priority_queue<pair<int,vector<int>>> maxHeap;
-        for (auto point : points) {
-            int x = point[0], y = point[1];
+        //{distance, point index} priority queue is by default max heap
+        priority_queue<pair<int,int>> maxHeap;
+        for (int i=0;i<points.size();i++) {
+            int x = points[i][0], y = points[i][1];
             int dist = x * x + y * y;
-            maxHeap.push({dist, {x,y}});
+            maxHeap.push({dist,i});
             if (maxHeap.size() > k)
                 maxHeap.pop();
         }
 
         vector<vector<int>> ans;
         while (!maxHeap.empty()) {
-            auto val = maxHeap.top();
-            ans.push_back({val.second[0], val.second[1]});
+            auto idx = maxHeap.top().second;
+            ans.push_back({points[idx][0], points[idx][1]});
             maxHeap.pop();
         }
 
