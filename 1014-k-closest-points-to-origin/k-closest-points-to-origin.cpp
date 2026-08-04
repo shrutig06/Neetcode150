@@ -13,7 +13,7 @@ public:
             maxHeap;
         for (auto point : points) {
             int x = point[0], y = point[1];
-            double dist = sqrt(x * x + y * y);
+            double dist = x * x + y * y;
             maxHeap.push({{x, y}, dist});
             if (maxHeap.size() > k)
                 maxHeap.pop();
