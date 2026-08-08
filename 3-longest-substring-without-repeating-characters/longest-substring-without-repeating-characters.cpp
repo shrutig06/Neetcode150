@@ -7,7 +7,7 @@ public:
         while (r < s.length()) {
             charCount[s[r]]++;
             if (charCount[s[r]] > 1) {
-                while (l<s.length() && charCount[s[r]]>1) {
+                while (charCount[s[r]]>1) {
                     charCount[s[l]]--;
                     l = l + 1;
                 }
