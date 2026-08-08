@@ -1,20 +1,22 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int left = 0, right = 0;
-        vector<bool> vis(100, false);
-        int maxCnt = 0;
-        while (right < s.length()) {
-            while(vis[s[right]]){
-                vis[s[left]]=false;
-                left++;
+        if(s.length()==1) return 1;
+        vector<int> charCount(256, 0);
+        int l = 0, r = 0, maxLen = 0;
+        while (r < s.length()) {
+            charCount[(unsigned char)s[r]]++;
+            if (charCount[(unsigned char)s[r]] > 1) {
+                while (l<s.length() && charCount[(unsigned char)s[r]]>1) {
+                    charCount[(unsigned char)s[l]]--;
+                    l = l + 1;
+                }
+            } else{
+                 maxLen = max(maxLen, r - l+1);
             }
-
-            vis[s[right]]=true;
-            maxCnt=max(maxCnt, right-left+1);
-            right++;
+            r++;
         }
 
-        return maxCnt;
+        return maxLen;
     }
 };
