@@ -9,7 +9,7 @@ public:
             maxFreq=max(maxFreq, mp[s[r]]);
             while(r-l+1-maxFreq>k){
                 mp[s[l]]--;
-                maxFreq=max(maxFreq, mp[s[l]]);
+                // maxFreq=max(maxFreq, mp[s[l]]);
                 l++;
             }
             maxLen=max(maxLen, r-l+1);
