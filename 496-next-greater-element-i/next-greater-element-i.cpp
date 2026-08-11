@@ -21,8 +21,7 @@ public:
         //     cout<<x.first<<" "<<x.second<<endl;
         // }
         for(int i=0;i<nums1.size();i++){
-            auto it=mp.find(nums1[i]);
-            if(it!=mp.end()) ans.push_back(it->second);
+           ans.push_back(mp[nums1[i]]);
         }
 
         return ans;
