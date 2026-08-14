@@ -11,7 +11,6 @@
 class Solution {
 public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
-        if(left==right) return head;
         ListNode* before=nullptr, *after=nullptr, *first=nullptr;
         int pos = 1;
         ListNode* curr = head;
