@@ -11,7 +11,7 @@
 class Solution {
 public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
-        ListNode* before=nullptr, *after=nullptr, *first=nullptr;
+        ListNode *before = nullptr, *after = nullptr, *first = nullptr;
         int pos = 1;
         ListNode* curr = head;
 
@@ -20,24 +20,27 @@ public:
                 before = curr;
             else if (pos == left)
                 first = curr;
-            else if (pos == right + 1)
+            else if (pos == right + 1) {
                 after = curr;
+                break;
+            }
+
             curr = curr->next;
             pos++;
         }
 
-        ListNode* prev, *nextNode;
-        prev=after;
-        curr=first;
-        while(curr && curr!=after){
-            nextNode=curr->next;
-            curr->next=prev;
-            prev=curr;
-            curr=nextNode;
+        ListNode *prev, *nextNode;
+        prev = after;
+        curr = first;
+        while (curr && curr != after) {
+            nextNode = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nextNode;
         }
-        if(before) {
-            before->next=prev;
-        } else{
+        if (before) {
+            before->next = prev;
+        } else {
             return prev;
         }
 
