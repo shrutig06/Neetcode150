@@ -1,1 +1,1 @@
-<h2>find-minimum-in-rotated-sorted-array Notes</h2><hr>[ Time taken: 4m 37s ]
+<h2>find-minimum-in-rotated-sorted-array Notes</h2><hr>[ Time taken: 57m 14s ]
