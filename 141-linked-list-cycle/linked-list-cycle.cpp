@@ -9,12 +9,11 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        vector<ListNode*> nodes;
+        unordered_set<ListNode*> nodes;
         ListNode* curr=head;
         while(curr){
-            auto it=find(nodes.begin(), nodes.end(), curr);
-            if(it!=nodes.end()) return true;
-            nodes.push_back(curr);
+            if(nodes.find(curr)!=nodes.end()) return true;
+            nodes.insert(curr);
             curr=curr->next;
         }
 
