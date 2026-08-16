@@ -13,7 +13,7 @@ public:
     bool isPalindrome(ListNode* head) {
         ListNode* prev=nullptr, *curr;
         curr=head;
-        vector<int> list, revList;
+        vector<int> list;
         while(curr){
             list.push_back(curr->val);
             ListNode* nextNode=curr->next;
@@ -21,12 +21,8 @@ public:
             prev=curr;
             curr=nextNode;
         }
-
-        while(prev){
-            revList.push_back(prev->val);
-            prev=prev->next;
-        }
-
+        vector<int> revList(list.size());
+        reverse_copy(list.begin(), list.end(), revList.begin());
         return list==revList;
     }
 };
