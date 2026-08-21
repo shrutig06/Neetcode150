@@ -20,7 +20,7 @@ public:
             pB=pB->next;
         }
 
-        cout<<cntA<<" "<<cntB<<endl;
+        // cout<<cntA<<" "<<cntB<<endl;
         pA=headA; pB=headB;
         int i=cntA, j=cntB;
         while(i>cntB){
