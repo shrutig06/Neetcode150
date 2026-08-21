@@ -9,21 +9,37 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        ListNode* currA=headA, *currB=headB;
-        ListNode* intersectNode = new ListNode(0);
-        vector<ListNode*> vis;
-        while(currA){
-            vis.push_back(currA);
-            currA=currA->next;
+        ListNode* pA=headA, *pB=headB;
+        int cntA=0, cntB=0;
+        while(pA){
+            cntA++;
+            pA=pA->next;
+        }
+        while(pB){
+            cntB++;
+            pB=pB->next;
         }
 
-        while(currB){
-            if(find(vis.begin(), vis.end(), currB)!=vis.end()){
-                intersectNode=currB;
-                return intersectNode;
-            }
-            currB=currB->next;
+        cout<<cntA<<" "<<cntB<<endl;
+        pA=headA; pB=headB;
+        int i=cntA, j=cntB;
+        while(i>cntB){
+            i--;
+            pA=pA->next;
         }
+        while(j>cntA){
+            j--;
+            pB=pB->next;
+        }
+
+        while(pA && pB){
+            if(pA==pB){
+                return pB;
+            }
+            pA=pA->next;
+            pB=pB->next;
+        }
+
         return nullptr;
     }
 };
