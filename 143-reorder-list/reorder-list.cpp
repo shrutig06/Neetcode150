@@ -13,16 +13,17 @@ public:
     void reorderList(ListNode* head) {
         if (!head || !head->next)
             return;
+
+        // find the middle node 
         ListNode *slow, *fast;
         slow = fast = head;
-        while (fast->next && fast->next->next) {
+        while (fast && fast->next) {
             slow = slow->next;
             fast = fast->next->next;
         }
-        ListNode* secondHead = slow->next;
-        slow->next = nullptr;
 
-        ListNode* curr = secondHead;
+        //reverse the second half of the list
+        ListNode* curr = slow;
         ListNode* prev = nullptr;
 
         while (curr) {
@@ -34,12 +35,12 @@ public:
 
         ListNode* first = head;
         ListNode* second = prev;
-        while (first && second) {
+        while (second->next) {
             ListNode* firstNext = first->next;
-            ListNode* secondNext = second->next;
             first->next = second;
-            second->next = firstNext;
             first = firstNext;
+            ListNode* secondNext = second->next;
+            second->next = first; 
             second = secondNext;
         }
     }
