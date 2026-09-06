@@ -13,7 +13,7 @@ public:
                     left = mid + 1;
                 }
             } else {
-                if (target >= nums[mid] && target <= nums[right]) {
+                if (target > nums[mid] && target <= nums[right]) {
                     left = mid + 1;
                 } else {
                     right = mid - 1;
